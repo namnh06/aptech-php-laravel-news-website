@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Relationship
+                    Laravel Relationship Checked
                 </div>
 
                 <div class="links">

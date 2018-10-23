@@ -4,12 +4,12 @@
       <div class="d-flex justify-content-between align-items-center">
         <span class="text-uppercase text-muted">
       laravel relationship
-    </span> {{--
-        <form action="{{route('users.create')}}" method="get">
+    </span>
+        <form action="{{route('posts.create')}}" method="get">
           <button type="submit" class="btn btn-info text-uppercase font-weight-bold rounded-0">
         create an user
           </button>
-        </form> --}}
+        </form>
       </div>
     </div>
   </div>

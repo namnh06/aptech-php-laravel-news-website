@@ -15,10 +15,10 @@ class CreateCategoryPostTable extends Migration
     {
         Schema::create('category_post', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->reference('id')->on('categories');
-            $table->integer('post_id')->reference('id')->on('posts');
+            $table->unsignedInteger('category_id')->reference('id')->on('categories');
+            $table->unsignedInteger('post_id')->reference('id')->on('posts');
             $table->timestamps();
-            $table->unique('category_id', 'post_id');
+            $table->unique(['category_id', 'post_id']);
         });
     }
 

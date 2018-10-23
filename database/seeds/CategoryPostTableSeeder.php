@@ -13,14 +13,22 @@ class CategoryPostTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $posts = Post::get(['id']);
+        $categoryIds = Category::pluck('id')->all();
 
-        $categories = Category::get(['id']);
+        $postIds = Post::pluck('id')->all();
 
-        DB::table('category_post')->insert([
-            'category_id' => $categories[2]->id,
-            'post_id' => $posts[5]->id,
-        ]);
+        foreach (range(1, 30) as $index) {
+            $categoryIdRand = $categoryIds[array_rand($categoryIds)];
+            $postIdRand = $postIds[array_rand($postIds)];
+
+            $checkExists = DB::table('category_post')->where('category_id', $categoryIdRand)->where('post_id', $postIdRand)->exists();
+
+            if (!$checkExists) {
+                DB::table('category_post')->insert([
+                    'category_id' => $categoryIdRand,
+                    'post_id' => $postIdRand,
+                ]);
+            }
+        }
     }
 }

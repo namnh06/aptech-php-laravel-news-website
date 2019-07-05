@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Article;
+use App\ArticleCategory;
 use Illuminate\Database\Seeder;
 
 class ArticleCategoryTableSeeder extends Seeder
@@ -21,9 +22,9 @@ class ArticleCategoryTableSeeder extends Seeder
             $categoryIdRand = $categories[array_rand($categories)];
             $articleIdRand = $article[array_rand($article)];
 
-            $checkExists = DB::table('article_category')->where('category_id', $categoryIdRand)->where('article_id', $articleIdRand)->exists();
+            $checkExists = ArticleCategory::where('category_id', $categoryIdRand)->where('article_id', $articleIdRand)->exists();
             if (!$checkExists) {
-                DB::table('article_category')->insert([
+                ArticleCategory::create([
                     'category_id' => $categoryIdRand,
                     'article_id' => $articleIdRand,
                 ]);

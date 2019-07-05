@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
  */
 
-Route::resource('posts', 'API\PostController');
+Route::resource('articles', 'API\ArticleController');
 Route::resource('categories', 'API\CategoryController');

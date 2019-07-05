@@ -1,10 +1,10 @@
 <?php
 
 use App\Category;
-use App\Post;
+use App\Article;
 use Illuminate\Database\Seeder;
 
-class CategoryPostTableSeeder extends Seeder
+class ArticleCategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,17 +15,17 @@ class CategoryPostTableSeeder extends Seeder
     {
         //
         $categories = Category::pluck('id')->toArray();
-        $posts = Post::pluck('id')->toArray();
+        $article = Article::pluck('id')->toArray();
 
         foreach (range(1, 10) as $index) {
             $categoryIdRand = $categories[array_rand($categories)];
-            $postIdRand = $posts[array_rand($posts)];
+            $articleIdRand = $article[array_rand($article)];
 
-            $checkExists = DB::table('category_post')->where('category_id', $categoryIdRand)->where('post_id', $postIdRand)->exists();
+            $checkExists = DB::table('article_category')->where('category_id', $categoryIdRand)->where('article_id', $articleIdRand)->exists();
             if (!$checkExists) {
-                DB::table('category_post')->insert([
+                DB::table('article_category')->insert([
                     'category_id' => $categoryIdRand,
-                    'post_id' => $postIdRand,
+                    'article_id' => $articleIdRand,
                 ]);
             }
         }

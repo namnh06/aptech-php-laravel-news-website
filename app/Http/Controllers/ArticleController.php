@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('articles.create');
     }
 
     /**
